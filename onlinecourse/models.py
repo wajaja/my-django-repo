@@ -115,10 +115,12 @@ class Question(models.Model):
             return True
         else:
             return False
+
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
     is_correct = models.BooleanField(default=False)
+
 class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
     choices = models.ManyToManyField(Choice)
