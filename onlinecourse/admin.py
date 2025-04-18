@@ -22,9 +22,17 @@ class ChoiceInline(admin.StackedInline):
     model = Choice
     extra = 2
 
+class LessonInline(admin.StackedInline):
+    model = Lesson
+    extra = 5
+
 class QuestionInline(admin.StackedInline):
     model = Question
     extra = 2
+
+class QuestionAdmin(admin.ModelAdmin):
+    inlines = [ChoiceInline]
+    list_display = ['content']
 
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
